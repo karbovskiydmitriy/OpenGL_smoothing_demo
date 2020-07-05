@@ -49,7 +49,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	switch (uMsg)
 	{
 	case WM_KEYDOWN:
-		if(wParam == VK_SPACE)
+		if (wParam == VK_SPACE)
 		{
 			Subdivide();
 			return 0;
