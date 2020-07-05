@@ -36,11 +36,12 @@ void main()
 	
 	Init();
 
-	while (1)
+	while (GetMessage(&msg, 0, 0, 0))
 	{
-		GetMessage(&msg, 0, 0, 0);
 		DispatchMessage(&msg);
 	}
+	
+	ExitProcess(0);
 }
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -55,10 +56,11 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		}
 		if (wParam != VK_ESCAPE)
 		{
-			return 0;
+			break;
 		}
-	case WM_CLOSE:
-		ExitProcess(0);
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		return 0;
 	case WM_PAINT:
 		Draw();
 		return 0;
