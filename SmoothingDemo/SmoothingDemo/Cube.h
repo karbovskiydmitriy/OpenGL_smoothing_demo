@@ -1,3 +1,6 @@
+#ifndef __CUBE_H__
+#define __CUBE_H__
+
 Vertex cubeVertices[] =
 {
 	{ -100.0f, -100.0f, 100.0f },
@@ -30,3 +33,5 @@ Mesh cube =
 {
 	12, cubeVertices, (Color *)0, cubeIndices
 };
+
+#endif // __CUBE_H__

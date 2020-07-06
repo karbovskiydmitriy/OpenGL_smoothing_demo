@@ -8,11 +8,23 @@ int clock;
 float angle;
 float speed = 0.18f;
 
-Color backColor = { 0.0f, 0.0f, 0.0f };
-Color c = { 0.5f, 0.5f, 0.5f };
+float fov = 60.0f;
+float zNear = 0.1f;
+float zFar = 1000.0f;
+
 int verticesCount;
 Vertex *vertices;
 Color *colors;
+
+Color backColor =
+{
+	0.0f, 0.0f, 0.0f
+};
+
+Color c =
+{
+	0.5f, 0.5f, 0.5f
+};
 
 WNDCLASSEX wndClass =
 {
@@ -22,9 +34,9 @@ WNDCLASSEX wndClass =
 PIXELFORMATDESCRIPTOR pfd =
 {
 	sizeof(PIXELFORMATDESCRIPTOR),
-        1, PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER | PFD_DRAW_TO_WINDOW,
-        PFD_TYPE_RGBA, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0,
-        PFD_MAIN_PLANE, 0, PFD_MAIN_PLANE, 0, 0
+		1, PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER | PFD_DRAW_TO_WINDOW,
+		PFD_TYPE_RGBA, COLOR_DEPTH, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		COLOR_DEPTH, 0, 0, PFD_MAIN_PLANE, 0, PFD_MAIN_PLANE, 0, 0
 };
 
 void main()
@@ -85,7 +97,7 @@ void Init()
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(60, (float)rect.right / rect.bottom, 0.1, 1000);
+	gluPerspective(fov, (float)rect.right / rect.bottom, zNear, zFar);
 	glEnable(GL_DEPTH_TEST);
 	glShadeModel(GL_SMOOTH);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
@@ -141,9 +153,11 @@ void Draw()
 
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
+
 	glVertexPointer(3, GL_FLOAT, 0, vertices);
 	glColorPointer(3, GL_FLOAT, 0, colors);
 	glDrawArrays(GL_TRIANGLES, 0, verticesCount);
+
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
 	
