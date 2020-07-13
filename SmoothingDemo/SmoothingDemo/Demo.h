@@ -22,7 +22,7 @@ extern Mesh cube;
 void main();
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 void Init();
-GenerateMesh(Mesh *mesh);
+void GenerateMesh(Mesh *mesh);
 void Draw();
 void Subdivide();
 void GetSmoothPoint(Vertex *v1, Vertex *v2, Vertex *center, Vertex *result);
