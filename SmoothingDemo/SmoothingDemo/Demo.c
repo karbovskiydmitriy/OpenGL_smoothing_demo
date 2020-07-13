@@ -105,7 +105,7 @@ void Init()
 	GenerateMesh(&cube);
 }
 
-GenerateMesh(Mesh *mesh)
+void GenerateMesh(Mesh *mesh)
 {
 	int i, j;
 	int index;
