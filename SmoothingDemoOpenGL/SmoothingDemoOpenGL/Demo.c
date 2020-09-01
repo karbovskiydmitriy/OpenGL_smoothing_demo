@@ -64,6 +64,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		if (wParam == VK_SPACE)
 		{
 			Subdivide();
+			
 			return 0;
 		}
 		if (wParam != VK_ESCAPE)
@@ -72,9 +73,11 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		}
 	case WM_DESTROY:
 		PostQuitMessage(0);
+			
 		return 0;
 	case WM_PAINT:
 		Draw();
+			
 		return 0;
 	}
 
