@@ -1,11 +1,11 @@
+#pragma once
+
 #ifndef __DEMO_H__
 #define __DEMO_H__
 
-#pragma once
-
 #include <Windows.h>
-#include <gl\GL.h>
 #include <gl\GLU.h>
+#include <gl\glext.h>
 #include "Types.h"
 #include "Cube.h"
 
@@ -15,6 +15,7 @@
 #define CLASS_NAME "SmoothingTestClass"
 #define WS_CUSTOM (WS_VISIBLE | WS_POPUP | WS_MAXIMIZE)
 #define COLOR_DEPTH 24
+#define OPENGL_LIB_NAME "opengl32.dll"
 
 #define SIZE 100
 #define PI 3.14f
